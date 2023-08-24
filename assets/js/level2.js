@@ -84,7 +84,7 @@ const checkWin = () => {
         imageAlt: 'Custom image',
       }).then(() => {
         localStorage.setItem('score2', score2);
-        return window.location.assign('index.html');
+        return window.location.assign('level3.html');
       });
     }, 1000);
   }
@@ -172,7 +172,7 @@ const handleExitGame = () => {
       imageAlt: 'Custom image',
     }).then((result) => {
       if (result.isConfirmed) {
-        return window.location.assign('level3.html');
+        return window.location.assign('index.html');
       }
     });
   });
