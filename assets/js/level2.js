@@ -1,5 +1,27 @@
-localStorage.removeItem('score1');
 localStorage.removeItem('score2');
+
+let questions = [
+  {
+    image: 'assets/images/hidung.png',
+    question: 'Bahasa inggris dari hidung adalah...',
+    choice1: 'Ear',
+    choice2: 'Hand',
+    choice3: 'Nose',
+    choice4: 'Mouth',
+    answer: 3,
+  },
+  {
+    image: 'assets/images/mulut.png',
+    question: 'Bahasa inggris dari mulut adalah...',
+    choice1: 'Eye',
+    choice2: 'Ear',
+    choice3: 'Head',
+    choice4: 'Mouth',
+    answer: 4,
+  },
+];
+
+let shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
 
 const questionText = document.getElementById('question');
 const questionImage = document.getElementById('question-image');
@@ -13,26 +35,12 @@ let count = 0;
 let score1 = localStorage.getItem('score1') ? Number(localStorage.getItem('score1')) : 0;
 let score2 = localStorage.getItem('score2') ? Number(localStorage.getItem('score2')) : 0;
 let score = score1 + score2;
-const MAX_COUNT = 1;
+const MAX_COUNT = 2;
 const BONUS_SCORE = 10;
 const MIN_SCORE = 5;
 
 const music = new Audio('assets/audio/music.mp3');
 music.volume = 0.2;
-
-let questions = [
-  {
-    image: 'assets/images/mata.png',
-    question: 'Bahasa inggris dari mata adalah...',
-    choice1: 'Eye',
-    choice2: 'Nose',
-    choice3: 'Head',
-    choice4: 'Ear',
-    answer: 1,
-  },
-];
-
-let shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
 
 const generateQuestion = () => {
   questionText.innerText = `${count + 1}. ${shuffledQuestions[count].question}`;
@@ -65,8 +73,8 @@ const checkWin = () => {
       doneSound.volume = 0.5;
 
       Swal.fire({
-        title: 'Level 1 Selesai!',
-        text: 'Level 1 sudah selesai! Berikutnya Level 2!',
+        title: 'Level 2 Selesai!',
+        text: 'Level 2 sudah selesai! Berikutnya Level 3!',
         icon: 'success',
         timer: 5000,
         timerProgressBar: true,
@@ -74,20 +82,20 @@ const checkWin = () => {
         imageWidth: 150,
         imageAlt: 'Custom image',
       }).then(() => {
-        localStorage.setItem('score1', score1);
-        return window.location.assign('level2.html');
+        localStorage.setItem('score2', score2);
+        return window.location.assign('level3.html');
       });
     }, 1000);
   }
 };
 
 const showScore = () => {
-  scoreText.innerText = score1;
+  scoreText.innerText = score1 + score2;
 };
 
 const updateScore = (option) => {
   count++;
-  option === 'success' ? (score1 += BONUS_SCORE) : score1 > 0 ? (score1 -= MIN_SCORE) : (score1 += 0);
+  option === 'success' ? (score2 += BONUS_SCORE) : score2 > 0 ? (score2 -= MIN_SCORE) : (score2 += 0);
   showScore();
 };
 
