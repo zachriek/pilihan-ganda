@@ -67,11 +67,11 @@ const incrementLevel = () => {
 
 const checkWin = () => {
   if (level === MAX_LEVEL) {
-    let doneSound = new Audio('assets/audio/done.mp3');
-    doneSound.play();
-    doneSound.volume = 0.5;
-
     setTimeout(() => {
+      let doneSound = new Audio('assets/audio/done.mp3');
+      doneSound.play();
+      doneSound.volume = 0.5;
+
       Swal.fire({
         title: 'Selesai!',
         text: 'Permainan sudah selesai!',
