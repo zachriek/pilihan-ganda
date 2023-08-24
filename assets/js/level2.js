@@ -28,6 +28,7 @@ const questionImage = document.getElementById('question-image');
 const choicesCard = document.querySelectorAll('.choice-card');
 const circleLevels = document.querySelectorAll('.circle-level');
 const scoreText = document.getElementById('score-text');
+const exitMenu = document.getElementById('exit-menu');
 const musicPlayer = document.getElementById('music-player');
 
 let level = 0;
@@ -83,7 +84,7 @@ const checkWin = () => {
         imageAlt: 'Custom image',
       }).then(() => {
         localStorage.setItem('score2', score2);
-        return window.location.assign('level3.html');
+        return window.location.assign('index.html');
       });
     }, 1000);
   }
@@ -157,12 +158,33 @@ const handlePlayMusic = () => {
   });
 };
 
+const handleExitGame = () => {
+  exitMenu.addEventListener('click', () => {
+    Swal.fire({
+      title: 'Keluar?',
+      text: 'Kamu yakin ingin keluar dari permainan?',
+      reverseButtons: true,
+      showCancelButton: true,
+      cancelButtonText: 'Batal',
+      confirmButtonText: 'Keluar',
+      imageUrl: 'assets/images/petunjuk.gif',
+      imageWidth: 150,
+      imageAlt: 'Custom image',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        return window.location.assign('index.html');
+      }
+    });
+  });
+};
+
 const init = () => {
   showScore();
   generateQuestion();
   generateChoice();
   handleClickChoice();
   handlePlayMusic();
+  handleExitGame();
 };
 
 init();
