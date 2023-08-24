@@ -40,9 +40,8 @@ const musicPlayer = document.getElementById('music-player');
 
 let level = 0;
 let count = 0;
-let score1 = localStorage.getItem('score1') ? Number(localStorage.getItem('score1')) : 0;
 let score2 = localStorage.getItem('score2') ? Number(localStorage.getItem('score2')) : 0;
-let score = score1 + score2;
+let score = score2;
 const MAX_COUNT = 3;
 const BONUS_SCORE = 10;
 const MIN_SCORE = 5;
