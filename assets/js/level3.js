@@ -153,11 +153,11 @@ const handlePlayMusic = () => {
   musicPlayer.addEventListener('click', () => {
     if (musicPlayer.classList.contains('playing')) {
       musicPlayer.classList.remove('playing');
-      musicPlayer.innerHTML = `<i class="fas fa-volume-up"></i>`;
+      musicPlayer.innerHTML = `<i class="fas fa-volume-mute"></i>`;
       music.pause();
     } else {
       musicPlayer.classList.add('playing');
-      musicPlayer.innerHTML = `<i class="fas fa-volume-mute"></i>`;
+      musicPlayer.innerHTML = `<i class="fas fa-volume-up"></i>`;
       music.play();
     }
   });
