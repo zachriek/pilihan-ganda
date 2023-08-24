@@ -172,7 +172,7 @@ const handleExitGame = () => {
       imageAlt: 'Custom image',
     }).then((result) => {
       if (result.isConfirmed) {
-        return window.location.assign('index.html');
+        return window.location.assign('level3.html');
       }
     });
   });
